@@ -1,0 +1,22 @@
+.centered {
+    text-align: center;
+}
+
+.whiteText {
+    color: white;
+}
+
+.bgGrey {
+    background-color: steelblue;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.cityBtn {
+    width: 80%;
+}
+
+.searchBar {
+    margin-left: 10%;
+    margin-right: 10%;
+}

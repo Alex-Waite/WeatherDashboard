@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-dark bg-dark">
+            <h1 class="navbar-brand mb-0 centered">Weather Dashboard</h1>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 border centered bgGrey whiteText">
+                    <h4>Search for a City:</h4>
+                    <div class="row searchBar ml-1 mr-1">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Search"
+                                aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-light" type="button" id="button-addon2">Search</button>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-1">
+                            <button class="btn btn-light cityBtn">Adelaide</button>
+                        </div>
+                        <div class="col-md-12 mb-1">
+                            <button class="btn btn-light cityBtn">Melbourne</button>
+                        </div>
+                        <div class="col-md-12 mb-1">
+                            <button class="btn btn-light cityBtn">Sydney</button>
+                        </div>
+                        <div class="col-md-12 mb-1">
+                            <button class="btn btn-light cityBtn">Perth</button>
+                        </div>
+                        <div class="col-md-12 mb-1">
+                            <button class="btn btn-light cityBtn">Darwin</button>
+                        </div>
+                        <div class="col-md-12 mb-5">
+                            <button class="btn btn-light cityBtn">Hobart</button>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="col-md-9 border">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>City: <span></span></h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Temprature: <span></span></span></h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Humidity: <span></span></span></h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Wind Speed: <span></span></span></h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>UV Index: <span></span></span></h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>5 Day Forecast:</h1>
+                            <div></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+
+    </script>
+</body>
+
+</html>
