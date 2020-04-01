@@ -60,12 +60,12 @@
                 </div>
                 <div class="col-md-9 border">
                     <div class="row">
-                        <div class="col-md-6">
-                            <h1>City: <span id="city-name"></span></h1>
+                        <div class="col-md-12">
+                            <h1>City: <span id="city-name"></span> <span id="date-today"></span></h1>
                         </div>
-                        <div class="col-md-6">
-                            <h4>Date: <span id="date-today"></span></h4>
-                        </div>
+
+
+
                     </div>
                     <div class="row">
                         <div class="col-md-12">
@@ -90,7 +90,20 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h1>5 Day Forecast:</h1>
-                            <div></div>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <h5><span id="day1-date"></span></h5>
+                                    <h6><span id="day1-icon"></span></h6>
+                                    <h6><span id="day1-temp"></span></h6>
+                                    <h6><span id="day1-humid"></span></h6>
+
+                                </div>
+                                <div class="col-md-2"></div>
+                                <div class="col-md-2"></div>
+                                <div class="col-md-2"></div>
+                                <div class="col-md-2"></div>
+                                <div class="col-md-2"></div>
+                            </div>
                         </div>
                     </div>
 
@@ -123,7 +136,7 @@
                 // Sets the text on the HTML to the value indicated in the API JSON
                 var nameOf = $("#city-name").text(response.name)
                 // Uses moment.Js to display the current date
-                var dateToday = $("#date-today").text(moment().format("MMMM do YYYY"))
+                var dateToday = $("#date-today").text(moment().format("(DD/MM/YYYY)"))
                 var tempratureOf = $("#temprature").text(response.main.temp + "°C")
                 var humidityOf = $("#humidity").text(response.main.humidity + "%")
                 var windSpeedOf = $("#wind-speed").text(response.wind.speed + " M/s")
