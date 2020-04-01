@@ -21,10 +21,19 @@
     margin-right: 10%;
 }
 
-.blueBG {
-    background-color: blue;
+.greenBG {
+    background-color: lime;
+}
+
+.amberBG {
+    background-color: orange;
 }
 
 .redBG {
     background-color: red;
+}
+
+.sizing {
+    height: 30px;
+    width: 30px;
 }
