@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -24,29 +26,32 @@
                     <h4>Search for a City:</h4>
                     <div class="row searchBar ml-1 mr-1">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Search"
-                                aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <input type="text" class="form-control" placeholder="Search" aria-label="City Search"
+                                aria-describedby="button-addon2" id="searchedCity">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-light" type="button" id="button-addon2">Search</button>
+                                <button class="btn btn-outline-light" type="button" id="searchBtn">Search</button>
                             </div>
                         </div>
                         <div class="col-md-12 mb-1">
-                            <button class="btn btn-light cityBtn">Adelaide</button>
+                            <button class="btn btn-light cityBtn" id="adelaide">Adelaide</button>
                         </div>
                         <div class="col-md-12 mb-1">
-                            <button class="btn btn-light cityBtn">Melbourne</button>
+                            <button class="btn btn-light cityBtn" id="melbourne">Melbourne</button>
                         </div>
                         <div class="col-md-12 mb-1">
-                            <button class="btn btn-light cityBtn">Sydney</button>
+                            <button class="btn btn-light cityBtn" id="sydney">Sydney</button>
                         </div>
                         <div class="col-md-12 mb-1">
-                            <button class="btn btn-light cityBtn">Perth</button>
+                            <button class="btn btn-light cityBtn" id="perth">Perth</button>
                         </div>
                         <div class="col-md-12 mb-1">
-                            <button class="btn btn-light cityBtn">Darwin</button>
+                            <button class="btn btn-light cityBtn" id="darwin">Darwin</button>
+                        </div>
+                        <div class="col-md-12 mb-1">
+                            <button class="btn btn-light cityBtn" id="hobart">Hobart</button>
                         </div>
                         <div class="col-md-12 mb-5">
-                            <button class="btn btn-light cityBtn">Hobart</button>
+                            <button class="btn btn-light cityBtn" id="canberra">Canberra</button>
                         </div>
                     </div>
 
@@ -56,27 +61,27 @@
                 <div class="col-md-9 border">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1>City: <span></span></h1>
+                            <h1>City: <span id="city-name"></span></h1>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <h3>Temprature: <span></span></span></h3>
+                            <h3>Temprature: <span id="temprature"></span></span></h3>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <h3>Humidity: <span></span></span></h3>
+                            <h3>Humidity: <span id="humidity"></span></span></h3>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <h3>Wind Speed: <span></span></span></h3>
+                            <h3>Wind Speed: <span id="wind-speed"></span></span></h3>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <h3>UV Index: <span></span></span></h3>
+                            <h3>UV Index: <span id="uv-index"></span></span></h3>
                         </div>
                     </div>
                     <div class="row">
@@ -98,7 +103,65 @@
 
     <script src="script.js"></script>
     <script>
+        const apiKey = "39f204c78b8d7984a012c051ce393e03"
 
+        function weatherForecast(chosenCity) {
+            var queryURL =
+                `https://api.openweathermap.org/data/2.5/weather?q=${chosenCity}&appid=${apiKey}&units=metric`
+            // 
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            }).then(function (response) {
+                console.log(response)
+                console.log("lalala")
+                var nameOf = $("#city-name").text(response.name)
+                var tempratureOf = $("#temprature").text(response.main.temp + "°C")
+                var humidityOf = $("#humidity").text(response.main.humidity + "%")
+                var windSpeedOf = $("#wind-speed").text(response.wind.speed + " M/s")
+            })
+
+        }
+
+        // Preset City on click functions, sets the users chosen city and plugs it into the api Query
+        $("#adelaide").on("click", function () {
+            var chosenCity = "adelaide";
+            weatherForecast(chosenCity)
+        })
+        $("#melbourne").on("click", function () {
+            var chosenCity = "melbourne";
+            weatherForecast(chosenCity)
+        })
+        $("#perth").on("click", function () {
+            var chosenCity = "perth";
+            weatherForecast(chosenCity)
+        })
+        $("#brisbane").on("click", function () {
+            var chosenCity = "brisbane";
+            weatherForecast(chosenCity)
+        })
+        $("#sydney").on("click", function () {
+            var chosenCity = "sydney";
+            weatherForecast(chosenCity)
+        })
+        $("#hobart").on("click", function () {
+            var chosenCity = "hobart";
+            weatherForecast(chosenCity)
+        })
+        $("#canberra").on("click", function () {
+            var chosenCity = "canberra";
+            weatherForecast(chosenCity)
+        })
+        $("#darwin").on("click", function () {
+            var chosenCity = "darwin";
+            weatherForecast(chosenCity)
+        })
+
+        // Search function, reads the users input value and sets it as the argument for the weather forecast function
+        $("#searchBtn").on("click", function () {
+            var chosenCity = $("#searchedCity").val()
+            weatherForecast(chosenCity)
+        })
     </script>
 </body>
 
