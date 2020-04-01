@@ -60,8 +60,11 @@
                 </div>
                 <div class="col-md-9 border">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <h1>City: <span id="city-name"></span></h1>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Date: <span id="date-today"></span></h4>
                         </div>
                     </div>
                     <div class="row">
@@ -102,20 +105,25 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script>
         const apiKey = "39f204c78b8d7984a012c051ce393e03"
 
         function weatherForecast(chosenCity) {
+            // The query URL determines what information the API returns from a search 
             var queryURL =
                 `https://api.openweathermap.org/data/2.5/weather?q=${chosenCity}&appid=${apiKey}&units=metric`
-            // 
+            // The AJAX function searches 
             $.ajax({
                 url: queryURL,
                 method: "GET"
             }).then(function (response) {
+                // The values returned by the api can be seen in the response object, logging this helps track the values so they can be "pointed to" when altering the HTML
                 console.log(response)
-                console.log("lalala")
+                // Sets the text on the HTML to the value indicated in the API JSON
                 var nameOf = $("#city-name").text(response.name)
+                // Uses moment.Js to display the current date
+                var dateToday = $("#date-today").text(moment().format("MMMM do YYYY"))
                 var tempratureOf = $("#temprature").text(response.main.temp + "°C")
                 var humidityOf = $("#humidity").text(response.main.humidity + "%")
                 var windSpeedOf = $("#wind-speed").text(response.wind.speed + " M/s")
@@ -123,7 +131,7 @@
 
         }
 
-        // Preset City on click functions, sets the users chosen city and plugs it into the api Query
+        // Preset City on-click functions, sets chosenCity to a set string as the argument for the weather forecast function
         $("#adelaide").on("click", function () {
             var chosenCity = "adelaide";
             weatherForecast(chosenCity)
